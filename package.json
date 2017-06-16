@@ -1,0 +1,15 @@
+{
+  "name": "@vidlec/enigma",
+  "version": "0.0.1",
+  "description": "Engima emulator for Nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Enigma",
+    "crypto"
+  ],
+  "author": "Josef Vidlák",
+  "license": "MIT"
+}
