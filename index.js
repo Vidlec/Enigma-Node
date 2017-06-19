@@ -57,6 +57,10 @@ function rotate() {
             break;
         } else {
             wheel.position = 0;
+            let letters = wheel.letters.split("")
+            let letter = letters.shift();
+            letters.push(letter);
+            wheel.letters = letters.join("");
         }
     }
 }
@@ -106,4 +110,4 @@ function encode(input) {
     })
 }
 
-encode("test".toUpperCase()).then(output => console.log(output));
+encode("THISISTESTINGMESSAGEIHADTOMAKEITLONGTOBESUREWHEELSROTATECORRECTLYTHISSHOULDBEENOUGH".toUpperCase()).then(output => console.log(output));
