@@ -2,14 +2,24 @@
 margin: 0 auto;
     width: 680px;
 }
+body{
+    background-color: #2c3e50;
+}
 #firstRow{
 width: 600px;
-height: 60px;
+    height: 60px;
+    margin-top: 10px;
 }
 #secondRow{
 width: 600px;
     height: 60px;
     margin-left: 25px;
+}
+#logo{
+    height: 60px;
+    margin-left: 60px;
+    margin-top: 5px;
+    
 }
 #thirdRow{
 width: 600px;
@@ -18,8 +28,8 @@ width: 600px;
 }
 #keyboard{
     width: 680px;
-    height: 180px;
-    border-top: 3px solid #1d1717;
+    height: 200px;
+    border-top: 3px solid #3e3e3e;
     list-style: none;
     background-color: #1a2025;
     color: white;
@@ -46,10 +56,10 @@ float: left;
 
 #lamps{
  width: 680px;
-    height: 180px;
-    border-top: 3px solid #1d1717;
+    height: 200px;
+    border-top: 3px solid #272727;
     list-style: none;
-    background-color: #1a2229;
+    background-color: #2b343c;
     color: white;
     font-weight: bold;
 }
@@ -70,9 +80,73 @@ float: left;
     }
 #settings{
     width: 680px;
-    height: 200px;
-    background-color: #1a2229
+    height: 260px;
+    background-color: #3b454e;
+    padding-top: 20px;
 }
 ul{
     margin: 0;
+}
+#rotors{
+height: 230px;
+    margin: 0 auto;
+    padding: 0px;
+    width: 300px;
+}
+#rotors .rotor{
+    float: left;
+    width: 60px;
+}
+
+.rotor i {
+    color: whitesmoke;
+    width: 60px;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+}
+.rotor i:hover {
+    cursor: pointer;
+    color: #fff6c7;
+}
+.rotor #position{
+    color: darkgoldenrod;
+    font-weight: bold;
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    font-size: xx-large;
+    
+}
+.rotor .label{
+    color: whitesmoke;
+    width: 60px;
+    text-align: center;
+    display: inline-block;
+}
+.rotor .select{
+    color: whitesmoke;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    background-color: #6f767f;
+    margin: 0 auto;
+    border: 2px solid #232323;
+}
+.rotor .select i{
+    height: 26px;
+    width: 26px;
+    display: block;
+    text-align: center;
+    line-height: 26px;
+    visibility: hidden;
+} 
+.rotor .select:hover{
+    background-color: #43a026;
+    cursor: pointer;
+
+}
+.rotor .select:hover i{
+visibility: visible;
+    
 }
