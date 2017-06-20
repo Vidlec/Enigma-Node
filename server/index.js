@@ -1,16 +1,19 @@
-enigma = require("./enigma.js");
-let Enigma = new enigma("hello",[{
-        position: 5,
-        letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE"
-    },
-    {
-        position: 3,
-        letters: "VZBRGITYUPSDNHLXAWMJQOFECK"
-    },
-    {
-        position: 22,
-        letters: "NZJHGRCXMYSWBOUFAIVLPEKQDT"
-    }
-]);
+const enigma = require("./enigma.js");
+const express = require("express");
+const app = express();
+const http = require('http').Server(app);
+const io = require("socket.io")(http);
 
-Enigma.enigma().then(result=>console.log(result));
+io.on("connection", (socket) => {
+    console.log("user connected");
+
+    socket.on("create-enigma", (wheels) => {
+        socket.enigma = new enigma(wheels);
+    });
+    socket.on("encrypt", (data) => {
+        socket.enigma.enigma(data.toUpperCase()).then(result => console.log(result));
+
+    });
+})
+app.use(express.static("client"));
+http.listen(3000);

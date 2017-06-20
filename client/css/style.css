@@ -1,0 +1,78 @@
+#root{
+margin: 0 auto;
+    width: 680px;
+}
+#firstRow{
+width: 600px;
+height: 60px;
+}
+#secondRow{
+width: 600px;
+    height: 60px;
+    margin-left: 25px;
+}
+#thirdRow{
+width: 600px;
+    height: 60px;
+    margin-left: 50px;
+}
+#keyboard{
+    width: 680px;
+    height: 180px;
+    border-top: 3px solid #1d1717;
+    list-style: none;
+    background-color: #1a2025;
+    color: white;
+    font-weight: bold;
+}
+
+
+    #keyboard li {  
+float: left;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    border: 2px solid #f5f5f5;
+    }
+
+    #keyboard li:hover {  
+        background-color: rgb(123, 120, 120);
+        cursor: pointer;
+    }
+
+
+#lamps{
+ width: 680px;
+    height: 180px;
+    border-top: 3px solid #1d1717;
+    list-style: none;
+    background-color: #1a2229;
+    color: white;
+    font-weight: bold;
+}
+        #lamps li {  
+float: left;
+    margin: 5px;
+    width: 50px;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    border-radius: 100%;
+    border: 2px solid #f5f5f5;
+    }
+    #lamps .glowing{
+        background-color: sandybrown;
+        box-shadow: 0px 0px 40px darkorange, 0px 0px 20px yellow;
+
+    }
+#settings{
+    width: 680px;
+    height: 200px;
+    background-color: #1a2229
+}
+ul{
+    margin: 0;
+}
