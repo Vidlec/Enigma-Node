@@ -2,17 +2,17 @@ function enigma(wheels) {
     this.plugboard = {
         input: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
         output: "EKMFLGDQVZNTOWYHXUSPAIBRCJ"
-    }
+    };
     this.reflector = {
         letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB"
-    }
+    };
     this.wheels = wheels;
     this.enigma = (input) => {
         return encode(input, this.wheels, this.reflector, this.plugboard);
-    }
+    };
     this.reset = () =>{
         init(this.wheels);
-    }
+    };
     init(this.wheels);
 }
 
@@ -29,14 +29,14 @@ function rotate(wheels) {
     for (let wheel of wheels) {
         if (wheel.position < 25) {
             wheel.position++;
-            let letters = wheel.letters.split("")
+            let letters = wheel.letters.split("");
             let letter = letters.shift();
             letters.push(letter);
             wheel.letters = letters.join("");
             break;
         } else {
             wheel.position = 0;
-            let letters = wheel.letters.split("")
+            let letters = wheel.letters.split("");
             let letter = letters.shift();
             letters.push(letter);
             wheel.letters = letters.join("");
@@ -83,7 +83,7 @@ function encode(input, wheels, reflector, plugboard) {
             letter = swap(letter, plugboard.output, plugboard.input);
             output += letter;
         }
-        resolve(output)
-    })
+        resolve(output);
+    });
 }
 module.exports = enigma;
