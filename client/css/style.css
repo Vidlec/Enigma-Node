@@ -124,7 +124,7 @@ height: 230px;
     text-align: center;
     display: inline-block;
 }
-.rotor .select{
+.rotor  .select{
     color: whitesmoke;
     width: 30px;
     height: 30px;
@@ -132,21 +132,15 @@ height: 230px;
     background-color: #6f767f;
     margin: 0 auto;
     border: 2px solid #232323;
-}
-.rotor .select i{
-    height: 26px;
-    width: 26px;
+    line-height: 25px;
     display: block;
-    text-align: center;
-    line-height: 26px;
-    visibility: hidden;
 } 
-.rotor .select:hover{
-    background-color: #43a026;
-    cursor: pointer;
 
-}
-.rotor .select:hover i{
-visibility: visible;
+.rotor .select:hover {
+    cursor: pointer;
     
+}
+.rotor .visible{
+    visibility: visible;
+    background-color: #50a03d;
 }
