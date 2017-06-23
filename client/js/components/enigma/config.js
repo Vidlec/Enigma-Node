@@ -1,32 +1,38 @@
+const lamps = "QWERTZUIOPASDFGHJKLYXCVBNM".split("").map((letter)=>{return {letter:letter,glowing:"dim"};});
 export const config = {
     keyboard: {
         firstRow: "QWERTZUIOP",
         secondRow: "ASDFGHJKL",
         thirdRow: "YXCVBNM"
     },
-    lamps: this.keyboard.firstRow.concat(this.keyboard.secondRow, this.keyboard.thirdRow),
+    lamps: lamps,
     rotors: [{
-            position: 5,
+            label: "I",
+            position: 1,
             letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
             selected: false
         },
         {
-            position: 3,
+            label: "II",
+            position: 1,
             letters: "VZBRGITYUPSDNHLXAWMJQOFECK",
             selected: false
         },
         {
-            position: 22,
+            label: "III",
+            position: 1,
             letters: "NZJHGRCXMYSWBOUFAIVLPEKQDT",
             selected: false
         },
         {
+            label: "IV",
             position: 1,
             letters: "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
             selected: false
         },
         {
-            position: 0,
+            label: "V",
+            position: 1,
             letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB",
             selected: false
         }
