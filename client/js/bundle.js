@@ -13192,7 +13192,9 @@ var Enigma = function (_Component) {
         }
     }, {
         key: "updateInfo",
-        value: function updateInfo() {}
+        value: function updateInfo() {
+            //TODO: infopanel
+        }
     }, {
         key: "render",
         value: function render() {

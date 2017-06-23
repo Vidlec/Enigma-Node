@@ -24,7 +24,7 @@ class Enigma extends Component{
         this.handleRotorSetting = this.handleRotorSetting.bind(this);
         this.handleRotorSelect = this.handleRotorSelect.bind(this);
         socket.on("lamp",(lamp)=>{
-        this.lightLamp(lamp); 
+            this.lightLamp(lamp); 
         });
 
     }
@@ -93,7 +93,7 @@ class Enigma extends Component{
         (this.state.rotorsSelected === 3) && this.createEnigma();
     }
     updateInfo(){
-
+        //TODO: infopanel
     }
 
     render() {

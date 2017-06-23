@@ -16,6 +16,7 @@ function enigma(wheels) {
     init(this.wheels);
 }
 
+//Initial rotor setting depending on starting position
 function init(wheels) {
     for (let wheel of wheels) {
         let letters = wheel.letters.split("");
@@ -25,6 +26,7 @@ function init(wheels) {
     }
 }
 
+//Rotate rotors. Time clock style.
 function rotate(wheels) {
     for (let wheel of wheels) {
         if (wheel.position < 25) {
@@ -51,6 +53,7 @@ function swap(letter, input, output) {
 
 //Encode message
 //TODO: Write function for wheels passage (forwards and backwards)
+//So it would be possible to have as many rotors as you desire.
 function encode(input, wheels, reflector, plugboard) {
     return new Promise((resolve, reject) => {
         let output = "";
