@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import {config} from "./config.js";
 
 import io from "socket.io-client";
-const socket = io.connect("http://localhost:3000");
+const socket = io.connect();
 
 import Settings from "./settings";
 import Lamps from "./lamps";
