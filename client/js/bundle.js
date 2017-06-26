@@ -13128,14 +13128,9 @@ var Enigma = function (_Component) {
 
             if (this.state.rotorsSelected === 3) {
                 socket.emit("encrypt", e.target.getAttribute("data-letter"));
-                var state = this.state;
-                var rotors = this.state.rotors.filter(function (rotor) {
-                    if (rotor.selected) {
-                        return rotor;
-                    }
-                });
-                rotate(rotors);
-                this.setState(state);
+                this.setState(rotate(this.state.rotors.filter(function (rotor) {
+                    return rotor.selected;
+                })));
             } else {
                 alert("You have to select 3 rotors");
             }
@@ -13143,12 +13138,9 @@ var Enigma = function (_Component) {
     }, {
         key: "createEnigma",
         value: function createEnigma() {
-            var rotors = this.state.rotors.filter(function (rotor) {
-                if (rotor.selected) {
-                    return rotor;
-                }
-            });
-            socket.emit("create-enigma", rotors);
+            socket.emit("create-enigma", this.state.rotors.filter(function (rotor) {
+                return rotor.selected;
+            }));
         }
     }, {
         key: "lightLamp",
@@ -13241,6 +13233,8 @@ function rotate(rotors) {
             }
         }
     }
+
+    return rotors;
 }
 
 _reactDom2.default.render(_react2.default.createElement(Enigma, null), document.getElementById("root"));
@@ -25899,7 +25893,7 @@ var config = exports.config = {
     }, {
         label: "IV",
         position: 1,
-        letters: "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+        letters: "FKQHTLXOCBJSPDZRAMEWNIUYGV",
         selected: false
     }, {
         label: "V",
@@ -29121,7 +29115,12 @@ var Settings = function (_Component) {
                     "ul",
                     { id: "rotors" },
                     this.props.rotors.map(function (rotor, i) {
-                        return _react2.default.createElement(_rotor2.default, { rotor: rotor, key: i, index: i, handleRotorSelect: _this2.props.handleRotorSelect, handleRotorSetting: _this2.props.handleRotorSetting });
+                        return _react2.default.createElement(_rotor2.default, {
+                            rotor: rotor,
+                            key: i,
+                            index: i,
+                            handleRotorSelect: _this2.props.handleRotorSelect,
+                            handleRotorSetting: _this2.props.handleRotorSetting });
                     })
                 )
             );
@@ -29182,14 +29181,22 @@ var Rotor = function (_Component) {
                     { className: "label" },
                     this.props.rotor.label
                 ),
-                _react2.default.createElement("i", { className: "fa fa-caret-up fa-3x", "data-direction": "add", "data-index": this.props.index, onClick: this.props.handleRotorSetting }),
+                _react2.default.createElement("i", { className: "fa fa-caret-up fa-3x",
+                    "data-direction": "add",
+                    "data-index": this.props.index,
+                    onClick: this.props.handleRotorSetting }),
                 _react2.default.createElement(
                     "div",
                     { id: "position" },
                     this.props.rotor.position
                 ),
-                _react2.default.createElement("i", { className: "fa fa-caret-down fa-3x ", "data-direction": "dec", "data-index": this.props.index, onClick: this.props.handleRotorSetting }),
-                _react2.default.createElement("div", { className: "select", "data-index": this.props.index, onClick: this.props.handleRotorSelect })
+                _react2.default.createElement("i", { className: "fa fa-caret-down fa-3x ",
+                    "data-direction": "dec",
+                    "data-index": this.props.index,
+                    onClick: this.props.handleRotorSetting }),
+                _react2.default.createElement("div", { className: "select",
+                    "data-index": this.props.index,
+                    onClick: this.props.handleRotorSelect })
             );
         }
     }]);
@@ -29242,7 +29249,11 @@ var Lamps = function (_Component) {
                 this.props.lamps.map(function (lamp, i) {
                     return _react2.default.createElement(
                         "li",
-                        { className: lamp.glowing + " letter", key: i, "data-index": i, "data-letter": lamp.letter },
+                        {
+                            className: lamp.glowing + " letter",
+                            key: i,
+                            "data-index": i,
+                            "data-letter": lamp.letter },
                         lamp.letter
                     );
                 }),

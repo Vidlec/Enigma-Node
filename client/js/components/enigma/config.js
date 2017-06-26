@@ -1,4 +1,4 @@
-const lamps = "QWERTZUIOPASDFGHJKLYXCVBNM".split("").map((letter)=>{return {letter:letter,glowing:"dim"};});
+const lamps = "QWERTZUIOPASDFGHJKLYXCVBNM".split("").map((letter) => {return {letter: letter, glowing: "dim"};});
 export const config = {
     keyboard: {
         firstRow: "QWERTZUIOP",
@@ -27,7 +27,7 @@ export const config = {
         {
             label: "IV",
             position: 1,
-            letters: "EKMFLGDQVZNTOWYHXUSPAIBRCJ",
+            letters: "FKQHTLXOCBJSPDZRAMEWNIUYGV",
             selected: false
         },
         {

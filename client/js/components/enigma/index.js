@@ -33,26 +33,14 @@ class Enigma extends Component{
         
         if(this.state.rotorsSelected === 3){
             socket.emit("encrypt", e.target.getAttribute("data-letter"));
-            let state = this.state;
-            let rotors = this.state.rotors.filter((rotor)=>{
-                if(rotor.selected){
-                    return rotor;
-                }
-            });
-            rotate(rotors);
-            this.setState(state);
+            this.setState(rotate(this.state.rotors.filter(rotor => rotor.selected)));
         }
         else{
             alert("You have to select 3 rotors");
         }
     }
     createEnigma(){
-            let rotors = this.state.rotors.filter((rotor)=>{
-                if(rotor.selected){
-                    return rotor;
-                }
-            });
-            socket.emit("create-enigma", rotors);
+            socket.emit("create-enigma", this.state.rotors.filter(rotor => rotor.selected));
     }
     lightLamp(letter){
         let state = this.state;
@@ -116,6 +104,7 @@ function rotate(rotors) {
             rotor.position = 1;
         }
     }
+    return rotors;
 }
 
 ReactDOM.render(<Enigma/>,document.getElementById("root"));

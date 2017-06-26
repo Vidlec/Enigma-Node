@@ -6,49 +6,36 @@ function enigma(wheels) {
     this.reflector = {
         letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB"
     };
-    this.wheels = wheels;
-    this.enigma = (input) => {
-        return encode(input, this.wheels, this.reflector, this.plugboard);
-    };
-    this.reset = () =>{
-        init(this.wheels);
-    };
-    init(this.wheels);
+    this.wheels = init(wheels);
+    this.enigma = input => encode(input, this.wheels, this.reflector, this.plugboard);
 }
 
 //Initial rotor setting depending on starting position
 function init(wheels) {
-    for (let wheel of wheels) {
+    return wheels.map(wheel => {
         let letters = wheel.letters.split("");
         let spliced = letters.splice(0, wheel.position);
-        letters = letters.concat(spliced);
-        wheel.letters = letters.join("");
-    }
+        wheel.letters = letters.concat(spliced);
+        return wheel;
+    });
 }
 
 //Rotate rotors. Time clock style.
 function rotate(wheels) {
     for (let wheel of wheels) {
-        if (wheel.position < 25) {
+        if (wheel.position < 26) {
             wheel.position++;
-            let letters = wheel.letters.split("");
-            let letter = letters.shift();
-            letters.push(letter);
-            wheel.letters = letters.join("");
+            wheel.letters.push(wheel.letters.shift());
             break;
         } else {
             wheel.position = 0;
-            let letters = wheel.letters.split("");
-            let letter = letters.shift();
-            letters.push(letter);
-            wheel.letters = letters.join("");
+            wheel.letters.push(wheel.letters.shift());
         }
     }
 }
 //Compare two arrays of letters
 function swap(letter, input, output) {
-    letter = input[output.indexOf(letter)];
-    return letter;
+    return input[output.indexOf(letter)];
 }
 
 //Encode message

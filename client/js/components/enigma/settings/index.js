@@ -8,7 +8,14 @@ class Settings extends Component{
         return(
             <div id="settings">
                 <ul id="rotors">
-                {this.props.rotors.map((rotor,i)=><Rotor rotor={rotor} key={i} index={i} handleRotorSelect={this.props.handleRotorSelect} handleRotorSetting={this.props.handleRotorSetting}></Rotor>)}
+                {this.props.rotors.map((rotor,i)=>
+                    <Rotor 
+                    rotor={rotor} 
+                    key={i} 
+                    index={i} 
+                    handleRotorSelect={this.props.handleRotorSelect} 
+                    handleRotorSetting={this.props.handleRotorSetting}>
+                    </Rotor>)}
                 </ul>
             </div>
         );
