@@ -171,3 +171,6 @@ outline: 5px dotted;
     margin-left: 10px;
     margin-right: 10px;
 }
+#slots .selected{
+    outline-color: lawngreen;
+}
