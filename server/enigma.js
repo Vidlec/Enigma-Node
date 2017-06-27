@@ -14,8 +14,7 @@ function enigma(wheels) {
 function init(wheels) {
     return wheels.map(wheel => {
         let letters = wheel.letters.split("");
-        let spliced = letters.splice(0, wheel.position);
-        wheel.letters = letters.concat(spliced);
+        wheel.letters = letters.splice(wheel.position).concat(letters.splice(0,wheel.position));
         return wheel;
     });
 }

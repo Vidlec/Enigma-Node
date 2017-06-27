@@ -1,5 +1,9 @@
 import React, {Component} from "react";
 import ReactDOM from "react-dom";
+import {DragDropContext} from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+
+
 import {config} from "./config.js";
 
 import io from "socket.io-client";
@@ -17,16 +21,20 @@ class Enigma extends Component{
             rotors: config.rotors,
             lamps: config.lamps,
             keys: config.keyboard,
+            choseSlots: config.choseSlots,
+            selectedSlots: config.selectedSlots,
             rotorsSelected: 0
         };
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.createEnigma = this.createEnigma.bind(this);
         this.handleRotorSetting = this.handleRotorSetting.bind(this);
         this.handleRotorSelect = this.handleRotorSelect.bind(this);
+    }
+
+    componentDidMount(){
         socket.on("lamp",(lamp)=>{
             this.lightLamp(lamp); 
         });
-
     }
     
     handleKeyPress(e){
@@ -50,16 +58,12 @@ class Enigma extends Component{
         this.setState(state);
     }
 
-    handleRotorSetting(e){
-        let method = e.target.getAttribute("data-direction");
-        let index = e.target.getAttribute("data-index");
+    handleRotorSetting(index, method){
         let state = this.state;
-        if(method === "add"){
-            state.rotors[index].position < 26 ? state.rotors[index].position++ : state.rotors[index].position = 1;
-        }
-        else{
-            state.rotors[index].position > 1 ? state.rotors[index].position-- : state.rotors[index].position = 26; 
-        }
+        (method === "add") ?
+        state.choseSlots[index].rotor.position < 26 ? state.choseSlots[index].rotor.position++ : state.choseSlots[index].rotor.position = 1 :
+        state.choseSlots[index].rotor.position > 1 ? state.choseSlots[index].rotor.position-- : state.choseSlots[index].rotor.position = 26;
+
         this.setState(state);
         (this.state.rotorsSelected === 3) && this.createEnigma();
     }
@@ -87,9 +91,18 @@ class Enigma extends Component{
     render() {
         return(
             <div id="main">
-                <Settings rotors={this.state.rotors} handleRotorSelect={this.handleRotorSelect} handleRotorSetting={this.handleRotorSetting}></Settings>
-                <Lamps lamps={this.state.lamps}></Lamps>      
-                <Keyboard keys={this.state.keys} handleKeyPress={this.handleKeyPress}></Keyboard>     
+                <Settings 
+                    choseSlots={this.state.choseSlots} 
+                    handleRotorSelect={this.handleRotorSelect} 
+                    handleRotorSetting={this.handleRotorSetting}>
+                </Settings>
+                <Lamps 
+                    lamps={this.state.lamps}>
+                </Lamps>      
+                <Keyboard 
+                    keys={this.state.keys} 
+                    handleKeyPress={this.handleKeyPress}>
+                </Keyboard>     
             </div>
         );
     }
@@ -106,5 +119,4 @@ function rotate(rotors) {
     }
     return rotors;
 }
-
-ReactDOM.render(<Enigma/>,document.getElementById("root"));
+export default DragDropContext(HTML5Backend)(Enigma);
