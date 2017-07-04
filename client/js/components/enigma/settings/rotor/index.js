@@ -4,17 +4,24 @@ import { DragSource } from "react-dnd";
 const rotorSource = {
   beginDrag(props) {
     return props;
+  },
+  isDragging(props){
+      
   }
 };
 
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging()
+    isDragging: monitor.isDragging(),
+    //connectDragPreview: connect.dragPreview()
   };
 }
 
 class Rotor extends Component{
+      componentDidMount() {
+        //this.props.connectDragPreview(new HTMLDivElement);
+    }
     render(){
         const { connectDragSource, isDragging } = this.props;
         const topMethod = (this.props.location === "selectedSlots") ? "add" : "dec";
