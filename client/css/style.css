@@ -110,7 +110,6 @@ color: whitesmoke;
     width: 30px;
     text-align: center;
     padding: 0px;
-    margin: 0px 5px 0px 5px;
     float: left;
 }
 .rotor i:hover {
@@ -136,6 +135,9 @@ color: whitesmoke;
     line-height: 40px;
     float: left;
 }
+
+
+
 .rotor  .select{
     color: whitesmoke;
     width: 30px;
@@ -172,6 +174,16 @@ outline: 5px dotted;
     margin-left: 10px;
     margin-right: 10px;
 }
+#slots .slot .rotor .label{
+width: 100%;
+}
+#slots .slot .rotor i{
+width: 100%;
+}
+#slots .slot .rotor #position{
+width: 100%;
+}
+
 #slots .slot .rotor{
     height: 100%;
 }
