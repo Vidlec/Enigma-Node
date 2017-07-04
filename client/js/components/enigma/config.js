@@ -15,15 +15,15 @@ export const config = {
                 label: "I",
                 position: 1,
                 letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
-                selected: false
+                selected: false,
             }
         },
         {
             rotor: {
-                label: "I",
+                label: "II",
                 position: 1,
                 letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
-                selected: false
+                selected: false,
             }
         },
         {
@@ -31,7 +31,7 @@ export const config = {
                 label: "III",
                 position: 1,
                 letters: "NZJHGRCXMYSWBOUFAIVLPEKQDT",
-                selected: false
+                selected: false,
             }
         },
         {
@@ -39,7 +39,8 @@ export const config = {
                 label: "IV",
                 position: 1,
                 letters: "FKQHTLXOCBJSPDZRAMEWNIUYGV",
-                selected: false
+                selected: false,
+                //index: 3
             }
         },
         {
@@ -47,7 +48,8 @@ export const config = {
                 label: "V",
                 position: 1,
                 letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB",
-                selected: false
+                selected: false,
+                //index: 4
             }
         },
     ],

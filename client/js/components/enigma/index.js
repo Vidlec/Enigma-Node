@@ -23,12 +23,13 @@ class Enigma extends Component{
             keys: config.keyboard,
             choseSlots: config.choseSlots,
             selectedSlots: config.selectedSlots,
-            rotorsSelected: 0
+            rotorsSelected: false
         };
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.createEnigma = this.createEnigma.bind(this);
         this.handleRotorSetting = this.handleRotorSetting.bind(this);
-        this.handleRotorSelect = this.handleRotorSelect.bind(this);
+        this.moveRotor = this.moveRotor.bind(this);
+        this.updateSelectedRotors = this.updateSelectedRotors.bind(this);
     }
 
     componentDidMount(){
@@ -39,16 +40,16 @@ class Enigma extends Component{
     
     handleKeyPress(e){
         
-        if(this.state.rotorsSelected === 3){
+        if(this.state.rotorsSelected){
             socket.emit("encrypt", e.target.getAttribute("data-letter"));
-            this.setState(rotate(this.state.rotors.filter(rotor => rotor.selected)));
+            this.setState(rotate(this.state.selectedSlots.reduce((rotors,slot) => rotors.concat(slot.rotor),[])));
         }
         else{
             alert("You have to select 3 rotors");
         }
     }
     createEnigma(){
-            socket.emit("create-enigma", this.state.rotors.filter(rotor => rotor.selected));
+            socket.emit("create-enigma", this.state.selectedSlots.reduce((rotors,slot) => rotors.concat(slot.rotor),[]));
     }
     lightLamp(letter){
         let state = this.state;
@@ -58,31 +59,40 @@ class Enigma extends Component{
         this.setState(state);
     }
 
-    handleRotorSetting(index, method){
+    handleRotorSetting(index, method, location){
         let state = this.state;
         (method === "add") ?
-        state.choseSlots[index].rotor.position < 26 ? state.choseSlots[index].rotor.position++ : state.choseSlots[index].rotor.position = 1 :
-        state.choseSlots[index].rotor.position > 1 ? state.choseSlots[index].rotor.position-- : state.choseSlots[index].rotor.position = 26;
+        state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 :
+        state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
 
         this.setState(state);
-        (this.state.rotorsSelected === 3) && this.createEnigma();
+        (this.state.rotorsSelected) && this.createEnigma();
     }
 
-    handleRotorSelect(e){
-        let index = e.target.getAttribute("data-index");
+    updateSelectedRotors(selectedSlots){
+       if(selectedSlots.filter(slot => (slot.rotor != null)).length === 3){
+           this.setState({rotorsSelected: true});
+           this.createEnigma();
+        } 
+    }
+
+    moveRotor(index,rotorProps,to){
+        let rotor = rotorProps.rotor;
         let state = this.state;
-        if(e.target.classList.value.indexOf("visible") != -1){
-            e.target.classList.remove("visible");
-            state.rotors[index].selected = false;
-            state.rotorsSelected--;
-        } 
-        else if(this.state.rotorsSelected != 3){
-            e.target.classList.add("visible");
-            state.rotors[index].selected = true;
-            state.rotorsSelected++;
-        } 
-        this.setState(state);
-        (this.state.rotorsSelected === 3) && this.createEnigma();
+        let target = state[to][index];
+        let source = state[rotorProps.location][rotorProps.index];
+
+        if(!target.rotor){
+            target.rotor = rotor;
+            source.rotor = null;
+        }
+        else
+        {
+            source.rotor = target.rotor;
+            target.rotor = rotor;
+        }
+        this.setState({selectedSlots: state.selectedSlots, choseSlots: state.choseSlots});
+        this.updateSelectedRotors(this.state.selectedSlots);
     }
     updateInfo(){
         //TODO: infopanel
@@ -93,7 +103,8 @@ class Enigma extends Component{
             <div id="main">
                 <Settings 
                     choseSlots={this.state.choseSlots} 
-                    handleRotorSelect={this.handleRotorSelect} 
+                    slots={this.state.selectedSlots}
+                    moveRotor={this.moveRotor}
                     handleRotorSetting={this.handleRotorSetting}>
                 </Settings>
                 <Lamps 
@@ -119,4 +130,5 @@ function rotate(rotors) {
     }
     return rotors;
 }
+
 export default DragDropContext(HTML5Backend)(Enigma);

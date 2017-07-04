@@ -1,9 +1,11 @@
 import React, {Component} from "react";
 import { DropTarget } from "react-dnd";
+import Rotor from "../rotor";
+
 
 const rotorTarget = {
   drop(props, monitor) {
-    moveRotor(props.index,monitor.getItem());
+    props.moveRotor(props.index,monitor.getItem(),props.type);
   }
 };
 function collect(connect, monitor) {
@@ -18,7 +20,13 @@ class Slot extends Component{
         const {connectDropTarget, isOver} = this.props;
         const status = (isOver) ? "selected" : "notSelected";
         return connectDropTarget(<div className={status + " slot"}>
-                {this.props.children}
+        {(this.props.rotor != null) && 
+            <Rotor
+              location={this.props.type}
+              rotor={this.props.rotor}  
+              index={this.props.index} 
+              handleRotorSetting={this.props.handleRotorSetting}>
+            </Rotor>}
             </div>);
     }
 }

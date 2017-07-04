@@ -6,20 +6,30 @@ class Settings extends Component{
     render(){
         return(
             <div id="settings">
-                <ul id="rotors">
+                <ul id="choseSlots"> 
                 {this.props.choseSlots.map((slot,i)=>
-                    <Rotor 
+                    <Slot 
+                    type="choseSlots"
+                    selected={false} 
                     rotor={slot.rotor} 
-                    key={i} 
                     index={i} 
-                    handleRotorSelect={this.props.handleRotorSelect} 
-                    handleRotorSetting={this.props.handleRotorSetting}>
-                    </Rotor>)}
+                    key={i} 
+                    handleRotorSetting={this.props.handleRotorSetting}
+                    moveRotor={this.props.moveRotor}>
+                    </Slot>)}
                 </ul>
+
                 <ul id="slots"> 
-                    <Slot selected={false}></Slot>
-                    <Slot selected={false}></Slot>
-                    <Slot selected={false}></Slot>
+                {this.props.slots.map((slot,i)=>
+                    <Slot 
+                    type="selectedSlots"
+                    selected={false} 
+                    rotor={slot.rotor} 
+                    index={i} 
+                    key={i} 
+                    handleRotorSetting={this.props.handleRotorSetting}
+                    moveRotor={this.props.moveRotor}>
+                    </Slot>)}
                 </ul>
             </div>
         );

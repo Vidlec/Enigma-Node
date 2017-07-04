@@ -87,19 +87,23 @@ float: left;
 ul{
     margin: 0;
 }
-#rotors{
+#choseSlots{
 height: 230px;
     /* margin: 0 auto; */
     padding: 0px;
     width: 180px;
     float: left;
 }
-#rotors .rotor{
+#choseSlots .slot{
     /* float: left; */
     /* height: 45px; */
-    width: 180px;
+    width: 160px;
     display: flex;
+    height: 45px;
+    outline: 1px dotted;
+
 }
+
 
 .rotor i {
 color: whitesmoke;
@@ -130,6 +134,7 @@ color: whitesmoke;
     text-align: center;
     display: inline-block;
     line-height: 40px;
+    float: left;
 }
 .rotor  .select{
     color: whitesmoke;
@@ -171,6 +176,10 @@ outline: 5px dotted;
     margin-left: 10px;
     margin-right: 10px;
 }
+#slots .slot .rotor{
+    height: 100%;
+}
+
 #slots .selected{
     outline-color: lawngreen;
 }

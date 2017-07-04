@@ -3,9 +3,7 @@ import { DragSource } from "react-dnd";
 
 const rotorSource = {
   beginDrag(props) {
-    return {
-        rotor: props.rotor
-    };
+    return props;
   }
 };
 
@@ -21,14 +19,14 @@ class Rotor extends Component{
         const { connectDragSource, isDragging } = this.props;
         return(
             connectDragSource(            
-                <li style={{opacity: isDragging ? 0.1 : 1, cursor: "move"}} className="rotor">
+                <li style={{opacity: isDragging ? 0.3 : 1, cursor: "move"}} className="rotor">
                 <div className="label">{this.props.rotor.label}</div>
-                <i  className="fa fa-caret-left fa-3x" 
-                    onClick={() => this.props.handleRotorSetting(this.props.index,"dec")}>
+                <i  className={(this.props.location === "selectedSlots") ? "fa-caret-down fa fa-3x" : "fa-caret-left fa fa-3x"}
+                    onClick={() => this.props.handleRotorSetting(this.props.index,"dec",this.props.location)}>
                 </i>
                 <div id="position">{this.props.rotor.position}</div>
-                <i  className="fa fa-caret-right fa-3x " 
-                    onClick={() => this.props.handleRotorSetting(this.props.index,"add")}>
+                <i  className={(this.props.location === "selectedSlots") ? "fa-caret-up fa fa-3x" : "fa-caret-right fa fa-3x"}
+                    onClick={() => this.props.handleRotorSetting(this.props.index,"add",this.props.location)}>
                 </i>
             </li>)
         );
