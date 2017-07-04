@@ -147,11 +147,7 @@ color: whitesmoke;
     line-height: 25px;
     display: block;
 } 
-li.rotor:hover {
-    /* border: 5px dotted; */
-    /* padding: initial; */
-    outline: 5px dotted #9e9e9e;
-}
+
 
 .rotor .select:hover {
     cursor: pointer;
@@ -179,7 +175,14 @@ outline: 5px dotted;
 #slots .slot .rotor{
     height: 100%;
 }
+#choseSlots .slot .rotor:hover{
+    outline: 4px solid white;
+}
 
 #slots .selected{
     outline-color: lawngreen;
+}
+
+#choseSlots .selected{
+    outline: 2px solid  lawngreen;
 }
