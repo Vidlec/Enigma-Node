@@ -14,7 +14,7 @@ export const config = {
             rotor: {
                 label: "I",
                 position: 1,
-                letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+                letters: "LEYJVCNIXWPBQMDRTAKZGFUHOS",
                 selected: false,
             }
         },
