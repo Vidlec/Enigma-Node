@@ -34,6 +34,7 @@ width: 600px;
     background-color: #1a2025;
     color: white;
     font-weight: bold;
+    user-select: none;
 }
 
 
@@ -62,6 +63,7 @@ float: left;
     background-color: #2b343c;
     color: white;
     font-weight: bold;
+    user-select: none;
 }
         #lamps li {  
 float: left;
@@ -197,4 +199,7 @@ width: 100%;
 
 #choseSlots .selected{
     outline: 2px solid  lawngreen;
+}
+.rotor{
+    width: 100%;
 }
