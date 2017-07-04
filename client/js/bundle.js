@@ -16188,6 +16188,8 @@ var Rotor = function (_Component) {
                 connectDragSource = _props.connectDragSource,
                 isDragging = _props.isDragging;
 
+            var topMethod = this.props.location === "selectedSlots" ? "add" : "dec";
+            var botMethod = this.props.location === "selectedSlots" ? "dec" : "add";
             return connectDragSource(_react2.default.createElement(
                 "li",
                 { style: { opacity: isDragging ? 0.3 : 1, cursor: "move" }, className: "rotor" },
@@ -16196,18 +16198,18 @@ var Rotor = function (_Component) {
                     { className: "label" },
                     this.props.rotor.label
                 ),
-                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-down fa fa-3x" : "fa-caret-left fa fa-3x",
+                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-up fa fa-3x" : "fa-caret-left fa fa-3x",
                     onClick: function onClick() {
-                        return _this2.props.handleRotorSetting(_this2.props.index, "dec", _this2.props.location);
+                        return _this2.props.handleRotorSetting(_this2.props.index, topMethod, _this2.props.location);
                     } }),
                 _react2.default.createElement(
                     "div",
                     { id: "position" },
                     this.props.rotor.position
                 ),
-                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-up fa fa-3x" : "fa-caret-right fa fa-3x",
+                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-down fa fa-3x" : "fa-caret-right fa fa-3x",
                     onClick: function onClick() {
-                        return _this2.props.handleRotorSetting(_this2.props.index, "add", _this2.props.location);
+                        return _this2.props.handleRotorSetting(_this2.props.index, botMethod, _this2.props.location);
                     } })
             ));
         }
