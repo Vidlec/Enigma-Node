@@ -1,6 +1,9 @@
 import React, {Component} from "react";
 import Rotor from "./rotor";
 import Slot from "./slot";
+import {DragDropContext} from "react-dnd";
+import HTML5Backend from "react-dnd-html5-backend";
+
 
 class Settings extends Component{
     render(){
@@ -36,4 +39,4 @@ class Settings extends Component{
     }
 }
 
-export default Settings;
+export default DragDropContext(HTML5Backend)(Settings);

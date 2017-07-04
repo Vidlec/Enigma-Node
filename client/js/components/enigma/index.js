@@ -74,6 +74,9 @@ class Enigma extends Component{
            this.setState({rotorsSelected: true});
            this.createEnigma();
         } 
+        else{
+            this.setState({rotorsSelected: false});
+        }
     }
 
     moveRotor(index,rotorProps,to){
@@ -131,4 +134,4 @@ function rotate(rotors) {
     return rotors;
 }
 
-export default DragDropContext(HTML5Backend)(Enigma);
+export default Enigma;
