@@ -16160,13 +16160,15 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var rotorSource = {
     beginDrag: function beginDrag(props) {
         return props;
-    }
+    },
+    isDragging: function isDragging(props) {}
 };
 
 function collect(connect, monitor) {
     return {
         connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging()
+        isDragging: monitor.isDragging(),
+        connectDragPreview: connect.dragPreview()
     };
 }
 
@@ -16180,6 +16182,11 @@ var Rotor = function (_Component) {
     }
 
     _createClass(Rotor, [{
+        key: "componentDidMount",
+        value: function componentDidMount() {
+            this.props.connectDragPreview();
+        }
+    }, {
         key: "render",
         value: function render() {
             var _this2 = this;
@@ -16436,7 +16443,8 @@ function rotate(rotors) {
     var _iteratorError = undefined;
 
     try {
-        for (var _iterator = rotors[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+
+        for (var _iterator = rotors.reverse()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
             var rotor = _step.value;
 
             if (rotor.position < 26) {
@@ -35040,7 +35048,7 @@ var config = exports.config = {
         rotor: {
             label: "I",
             position: 1,
-            letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
+            letters: "LEYJVCNIXWPBQMDRTAKZGFUHOS",
             selected: false
         }
     }, {

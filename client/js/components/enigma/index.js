@@ -123,7 +123,8 @@ class Enigma extends Component{
 }
 
 function rotate(rotors) {
-    for (let rotor of rotors) {
+
+    for (let rotor of rotors.reverse()) {
         if (rotor.position < 26) {
             rotor.position++;
             break;
