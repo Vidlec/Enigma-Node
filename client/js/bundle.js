@@ -16167,8 +16167,8 @@ var rotorSource = {
 function collect(connect, monitor) {
     return {
         connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging(),
-        connectDragPreview: connect.dragPreview()
+        isDragging: monitor.isDragging()
+        //connectDragPreview: connect.dragPreview()
     };
 }
 
@@ -16184,7 +16184,7 @@ var Rotor = function (_Component) {
     _createClass(Rotor, [{
         key: "componentDidMount",
         value: function componentDidMount() {
-            this.props.connectDragPreview();
+            //this.props.connectDragPreview(new HTMLDivElement);
         }
     }, {
         key: "render",

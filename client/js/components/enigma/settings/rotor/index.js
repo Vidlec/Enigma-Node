@@ -13,7 +13,7 @@ const rotorSource = {
 function collect(connect, monitor) {
   return {
     connectDragSource: connect.dragSource(),
-    isDragging: monitor.isDragging(),
+    isDragging: monitor.isDragging()
     //connectDragPreview: connect.dragPreview()
   };
 }
