@@ -16298,6 +16298,10 @@ var _keyboard = __webpack_require__(405);
 
 var _keyboard2 = _interopRequireDefault(_keyboard);
 
+var _infopanel = __webpack_require__(406);
+
+var _infopanel2 = _interopRequireDefault(_infopanel);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -16322,7 +16326,9 @@ var Enigma = function (_Component) {
             keys: _config.config.keyboard,
             choseSlots: _config.config.choseSlots,
             selectedSlots: _config.config.selectedSlots,
-            rotorsSelected: false
+            rotorsSelected: false,
+            text: ""
+
         };
         _this.handleKeyPress = _this.handleKeyPress.bind(_this);
         _this.createEnigma = _this.createEnigma.bind(_this);
@@ -16365,6 +16371,7 @@ var Enigma = function (_Component) {
         key: "lightLamp",
         value: function lightLamp(letter) {
             var state = this.state;
+            state.text = state.text + letter;
             state.lamps.map(function (lamp) {
                 letter === lamp.letter ? lamp.glowing = "glowing" : lamp.glowing = "dim";
             });
@@ -16374,6 +16381,7 @@ var Enigma = function (_Component) {
         key: "handleRotorSetting",
         value: function handleRotorSetting(index, method, location) {
             var state = this.state;
+            state.text = "";
             method === "add" ? state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 : state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
 
             this.setState(state);
@@ -16385,7 +16393,7 @@ var Enigma = function (_Component) {
             if (selectedSlots.filter(function (slot) {
                 return slot.rotor != null;
             }).length === 3) {
-                this.setState({ rotorsSelected: true });
+                this.setState({ rotorsSelected: true, text: "" });
                 this.createEnigma();
             } else {
                 this.setState({ rotorsSelected: false });
@@ -16420,16 +16428,22 @@ var Enigma = function (_Component) {
             return _react2.default.createElement(
                 "div",
                 { id: "main" },
-                _react2.default.createElement(_settings2.default, {
-                    choseSlots: this.state.choseSlots,
-                    slots: this.state.selectedSlots,
-                    moveRotor: this.moveRotor,
-                    handleRotorSetting: this.handleRotorSetting }),
-                _react2.default.createElement(_lamps2.default, {
-                    lamps: this.state.lamps }),
-                _react2.default.createElement(_keyboard2.default, {
-                    keys: this.state.keys,
-                    handleKeyPress: this.handleKeyPress })
+                _react2.default.createElement(
+                    "div",
+                    { id: "enigma" },
+                    _react2.default.createElement(_settings2.default, {
+                        choseSlots: this.state.choseSlots,
+                        slots: this.state.selectedSlots,
+                        moveRotor: this.moveRotor,
+                        handleRotorSetting: this.handleRotorSetting }),
+                    _react2.default.createElement(_lamps2.default, {
+                        lamps: this.state.lamps }),
+                    _react2.default.createElement(_keyboard2.default, {
+                        keys: this.state.keys,
+                        handleKeyPress: this.handleKeyPress })
+                ),
+                _react2.default.createElement(_infopanel2.default, {
+                    text: this.state.text })
             );
         }
     }]);
@@ -38531,6 +38545,64 @@ var Keyboard = function (_Component) {
 }(_react.Component);
 
 exports.default = Keyboard;
+
+/***/ }),
+/* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(8);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Infopanel = function (_Component) {
+    _inherits(Infopanel, _Component);
+
+    function Infopanel() {
+        _classCallCheck(this, Infopanel);
+
+        return _possibleConstructorReturn(this, (Infopanel.__proto__ || Object.getPrototypeOf(Infopanel)).apply(this, arguments));
+    }
+
+    _createClass(Infopanel, [{
+        key: "render",
+        value: function render() {
+            return _react2.default.createElement(
+                "div",
+                { id: "infopanel" },
+                _react2.default.createElement(
+                    "div",
+                    { className: "infoText" },
+                    _react2.default.createElement(
+                        "p",
+                        null,
+                        this.props.text
+                    )
+                )
+            );
+        }
+    }]);
+
+    return Infopanel;
+}(_react.Component);
+
+exports.default = Infopanel;
 
 /***/ })
 /******/ ]);

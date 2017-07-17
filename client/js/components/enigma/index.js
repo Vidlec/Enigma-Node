@@ -12,6 +12,7 @@ const socket = io.connect();
 import Settings from "./settings";
 import Lamps from "./lamps";
 import Keyboard from "./keyboard";
+import Infopanel from "./infopanel";
 
 
 class Enigma extends Component{
@@ -23,7 +24,9 @@ class Enigma extends Component{
             keys: config.keyboard,
             choseSlots: config.choseSlots,
             selectedSlots: config.selectedSlots,
-            rotorsSelected: false
+            rotorsSelected: false,
+            text: ""
+
         };
         this.handleKeyPress = this.handleKeyPress.bind(this);
         this.createEnigma = this.createEnigma.bind(this);
@@ -53,6 +56,7 @@ class Enigma extends Component{
     }
     lightLamp(letter){
         let state = this.state;
+        state.text = state.text + letter;
         state.lamps.map((lamp) => {
             (letter === lamp.letter)? lamp.glowing = "glowing" : lamp.glowing = "dim"; 
         });
@@ -61,6 +65,7 @@ class Enigma extends Component{
 
     handleRotorSetting(index, method, location){
         let state = this.state;
+        state.text = "";
         (method === "add") ?
         state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 :
         state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
@@ -71,7 +76,7 @@ class Enigma extends Component{
 
     updateSelectedRotors(selectedSlots){
        if(selectedSlots.filter(slot => (slot.rotor != null)).length === 3){
-           this.setState({rotorsSelected: true});
+           this.setState({rotorsSelected: true,text: ""});
            this.createEnigma();
         } 
         else{
@@ -104,19 +109,24 @@ class Enigma extends Component{
     render() {
         return(
             <div id="main">
-                <Settings 
-                    choseSlots={this.state.choseSlots} 
-                    slots={this.state.selectedSlots}
-                    moveRotor={this.moveRotor}
-                    handleRotorSetting={this.handleRotorSetting}>
-                </Settings>
-                <Lamps 
-                    lamps={this.state.lamps}>
-                </Lamps>      
-                <Keyboard 
-                    keys={this.state.keys} 
-                    handleKeyPress={this.handleKeyPress}>
-                </Keyboard>     
+                <div id="enigma">
+                    <Settings 
+                        choseSlots={this.state.choseSlots} 
+                        slots={this.state.selectedSlots}
+                        moveRotor={this.moveRotor}
+                        handleRotorSetting={this.handleRotorSetting}>
+                    </Settings>
+                    <Lamps 
+                        lamps={this.state.lamps}>
+                    </Lamps>      
+                    <Keyboard 
+                        keys={this.state.keys} 
+                        handleKeyPress={this.handleKeyPress}>
+                    </Keyboard>   
+                </div>
+                <Infopanel 
+                    text={this.state.text}>
+                </Infopanel>     
             </div>
         );
     }

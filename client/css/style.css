@@ -1,6 +1,6 @@
 #root{
 margin: 0 auto;
-    width: 680px;
+    width: 1200px;
 }
 body{
     background-color: #2c3e50;
@@ -202,4 +202,60 @@ width: 100%;
 }
 .rotor{
     width: 100%;
+}
+
+.infoText{
+display: block;
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+box-sizing: content-box;
+float: none;
+color: black;
+z-index: auto;
+font-size: x-large;
+height: 640px;
+position: static;
+cursor: default;
+opacity: 1;
+margin: 0;
+line-height: 28px;
+padding: 27px 20px 0px 100px;
+overflow: visible;
+border: none;
+-webkit-border-radius: 0;
+border-radius: 0;
+-o-text-overflow: clip;
+text-overflow: clip;
+background: -webkit-linear-gradient(0deg, rgba(0,0,0,0) 79px, rgb(171,206,212) 79px, rgb(171,206,212) 81px, rgba(0,0,0,0) 81px), -webkit-linear-gradient(90deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em), rgb(255, 255, 255);
+background: -moz-linear-gradient(90deg, rgba(0,0,0,0) 79px, rgb(171,206,212) 79px, rgb(171,206,212) 81px, rgba(0,0,0,0) 81px), -moz-linear-gradient(0deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em), rgb(255, 255, 255);
+background: linear-gradient(90deg, rgba(0,0,0,0) 79px, rgb(171,206,212) 79px, rgb(171,206,212) 81px, rgba(0,0,0,0) 81px), linear-gradient(0deg, rgb(238,238,238) 0.1em, rgba(0,0,0,0) 0.1em), rgb(255, 255, 255);
+background-position: auto auto;
+-webkit-background-origin: padding-box;
+background-origin: padding-box;
+-webkit-background-clip: border-box;
+background-clip: border-box;
+-webkit-background-size: 100% 1.2em;
+background-size: 100% 1.2em;
+-webkit-box-shadow: none;
+box-shadow: none;
+text-shadow: none;
+-webkit-transition: none;
+-moz-transition: none;
+-o-transition: none;
+transition: none;
+-webkit-transform: none;
+transform: none;
+-webkit-transform-origin: 50% 50% 0;
+transform-origin: 50% 50% 0;
+}
+
+#infopanel{
+    margin-top: 20px;
+    float: left;
+    width: 500px;
+}
+
+#enigma{
+    float: right;
+    margin-top: 20px;
 }
