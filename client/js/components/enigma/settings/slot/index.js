@@ -1,6 +1,6 @@
-import React, {Component} from "react";
-import { DropTarget } from "react-dnd";
-import Rotor from "../rotor";
+import React, {Component} from 'react';
+import { DropTarget } from 'react-dnd';
+import Rotor from '../rotor';
 
 
 const rotorTarget = {
@@ -16,18 +16,18 @@ function collect(connect, monitor) {
 }
 
 class Slot extends Component{
-    render(){
-        const {connectDropTarget, isOver} = this.props;
-        const status = (isOver) ? "selected" : "notSelected";
-        return connectDropTarget(<div className={status + " slot"}>
-        {(this.props.rotor != null) && 
+  render(){
+    const {connectDropTarget, isOver} = this.props;
+    const status = (isOver) ? 'selected' : 'notSelected';
+    return connectDropTarget(<div className={status + ' slot'}>
+      {(this.props.rotor != null) && 
             <Rotor
               location={this.props.type}
               rotor={this.props.rotor}  
               index={this.props.index} 
               handleRotorSetting={this.props.handleRotorSetting}>
             </Rotor>}
-            </div>);
-    }
+    </div>);
+  }
 }
-export default DropTarget("rotor", rotorTarget, collect)(Slot);
+export default DropTarget('rotor', rotorTarget, collect)(Slot);

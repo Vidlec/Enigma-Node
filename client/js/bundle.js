@@ -16137,7 +16137,7 @@ module.exports = function(obj, fn){
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 exports.ItemTypes = undefined;
 
@@ -16158,75 +16158,75 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var rotorSource = {
-    beginDrag: function beginDrag(props) {
-        return props;
-    },
-    isDragging: function isDragging(props) {}
+  beginDrag: function beginDrag(props) {
+    return props;
+  },
+  isDragging: function isDragging(props) {}
 };
 
 function collect(connect, monitor) {
-    return {
-        connectDragSource: connect.dragSource(),
-        isDragging: monitor.isDragging()
-        //connectDragPreview: connect.dragPreview()
-    };
+  return {
+    connectDragSource: connect.dragSource(),
+    isDragging: monitor.isDragging()
+    //connectDragPreview: connect.dragPreview()
+  };
 }
 
 var Rotor = function (_Component) {
-    _inherits(Rotor, _Component);
+  _inherits(Rotor, _Component);
 
-    function Rotor() {
-        _classCallCheck(this, Rotor);
+  function Rotor() {
+    _classCallCheck(this, Rotor);
 
-        return _possibleConstructorReturn(this, (Rotor.__proto__ || Object.getPrototypeOf(Rotor)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Rotor.__proto__ || Object.getPrototypeOf(Rotor)).apply(this, arguments));
+  }
+
+  _createClass(Rotor, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      //this.props.connectDragPreview(new HTMLDivElement);
     }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
 
-    _createClass(Rotor, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            //this.props.connectDragPreview(new HTMLDivElement);
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            var _this2 = this;
+      var _props = this.props,
+          connectDragSource = _props.connectDragSource,
+          isDragging = _props.isDragging;
 
-            var _props = this.props,
-                connectDragSource = _props.connectDragSource,
-                isDragging = _props.isDragging;
+      var topMethod = this.props.location === 'selectedSlots' ? 'add' : 'dec';
+      var botMethod = this.props.location === 'selectedSlots' ? 'dec' : 'add';
+      return connectDragSource(_react2.default.createElement(
+        'li',
+        { style: { opacity: isDragging ? 0.3 : 1, cursor: 'move' }, className: 'rotor' },
+        _react2.default.createElement(
+          'div',
+          { className: 'label' },
+          this.props.rotor.label
+        ),
+        _react2.default.createElement('i', { className: this.props.location === 'selectedSlots' ? 'fa-caret-up fa fa-3x' : 'fa-caret-left fa fa-3x',
+          onClick: function onClick() {
+            return _this2.props.handleRotorSetting(_this2.props.index, topMethod, _this2.props.location);
+          } }),
+        _react2.default.createElement(
+          'div',
+          { id: 'position' },
+          this.props.rotor.position
+        ),
+        _react2.default.createElement('i', { className: this.props.location === 'selectedSlots' ? 'fa-caret-down fa fa-3x' : 'fa-caret-right fa fa-3x',
+          onClick: function onClick() {
+            return _this2.props.handleRotorSetting(_this2.props.index, botMethod, _this2.props.location);
+          } })
+      ));
+    }
+  }]);
 
-            var topMethod = this.props.location === "selectedSlots" ? "add" : "dec";
-            var botMethod = this.props.location === "selectedSlots" ? "dec" : "add";
-            return connectDragSource(_react2.default.createElement(
-                "li",
-                { style: { opacity: isDragging ? 0.3 : 1, cursor: "move" }, className: "rotor" },
-                _react2.default.createElement(
-                    "div",
-                    { className: "label" },
-                    this.props.rotor.label
-                ),
-                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-up fa fa-3x" : "fa-caret-left fa fa-3x",
-                    onClick: function onClick() {
-                        return _this2.props.handleRotorSetting(_this2.props.index, topMethod, _this2.props.location);
-                    } }),
-                _react2.default.createElement(
-                    "div",
-                    { id: "position" },
-                    this.props.rotor.position
-                ),
-                _react2.default.createElement("i", { className: this.props.location === "selectedSlots" ? "fa-caret-down fa fa-3x" : "fa-caret-right fa fa-3x",
-                    onClick: function onClick() {
-                        return _this2.props.handleRotorSetting(_this2.props.index, botMethod, _this2.props.location);
-                    } })
-            ));
-        }
-    }]);
-
-    return Rotor;
+  return Rotor;
 }(_react.Component);
 
 var ItemTypes = exports.ItemTypes = {
-    ROTOR: "rotor"
+  ROTOR: 'rotor'
 };
 exports.default = (0, _reactDnd.DragSource)(ItemTypes.ROTOR, rotorSource, collect)(Rotor);
 
@@ -16251,7 +16251,7 @@ var _reactDom2 = _interopRequireDefault(_reactDom);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-_reactDom2.default.render(_react2.default.createElement(_enigma2.default, null), document.getElementById("root"));
+_reactDom2.default.render(_react2.default.createElement(_enigma2.default, null), document.getElementById('root'));
 
 /***/ }),
 /* 166 */
@@ -16261,7 +16261,7 @@ _reactDom2.default.render(_react2.default.createElement(_enigma2.default, null),
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -16313,177 +16313,177 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var socket = _socket2.default.connect();
 
 var Enigma = function (_Component) {
-    _inherits(Enigma, _Component);
+  _inherits(Enigma, _Component);
 
-    function Enigma(props) {
-        _classCallCheck(this, Enigma);
+  function Enigma(props) {
+    _classCallCheck(this, Enigma);
 
-        var _this = _possibleConstructorReturn(this, (Enigma.__proto__ || Object.getPrototypeOf(Enigma)).call(this, props));
+    var _this = _possibleConstructorReturn(this, (Enigma.__proto__ || Object.getPrototypeOf(Enigma)).call(this, props));
 
-        _this.state = {
-            rotors: _config.config.rotors,
-            lamps: _config.config.lamps,
-            keys: _config.config.keyboard,
-            choseSlots: _config.config.choseSlots,
-            selectedSlots: _config.config.selectedSlots,
-            rotorsSelected: false,
-            text: ""
+    _this.state = {
+      rotors: _config.config.rotors,
+      lamps: _config.config.lamps,
+      keys: _config.config.keyboard,
+      choseSlots: _config.config.choseSlots,
+      selectedSlots: _config.config.selectedSlots,
+      rotorsSelected: false,
+      text: ''
 
-        };
-        _this.handleKeyPress = _this.handleKeyPress.bind(_this);
-        _this.createEnigma = _this.createEnigma.bind(_this);
-        _this.handleRotorSetting = _this.handleRotorSetting.bind(_this);
-        _this.moveRotor = _this.moveRotor.bind(_this);
-        _this.updateSelectedRotors = _this.updateSelectedRotors.bind(_this);
-        return _this;
+    };
+    _this.handleKeyPress = _this.handleKeyPress.bind(_this);
+    _this.createEnigma = _this.createEnigma.bind(_this);
+    _this.handleRotorSetting = _this.handleRotorSetting.bind(_this);
+    _this.moveRotor = _this.moveRotor.bind(_this);
+    _this.updateSelectedRotors = _this.updateSelectedRotors.bind(_this);
+    return _this;
+  }
+
+  _createClass(Enigma, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this2 = this;
+
+      socket.on('lamp', function (lamp) {
+        _this2.lightLamp(lamp);
+      });
     }
+  }, {
+    key: 'handleKeyPress',
+    value: function handleKeyPress(e) {
 
-    _createClass(Enigma, [{
-        key: "componentDidMount",
-        value: function componentDidMount() {
-            var _this2 = this;
+      if (this.state.rotorsSelected) {
+        socket.emit('encrypt', e.target.getAttribute('data-letter'));
+        this.setState(rotate(this.state.selectedSlots.reduce(function (rotors, slot) {
+          return rotors.concat(slot.rotor);
+        }, [])));
+      } else {
+        alert('You have to select 3 rotors');
+      }
+    }
+  }, {
+    key: 'createEnigma',
+    value: function createEnigma() {
+      socket.emit('create-enigma', this.state.selectedSlots.reduce(function (rotors, slot) {
+        return rotors.concat(slot.rotor);
+      }, []));
+    }
+  }, {
+    key: 'lightLamp',
+    value: function lightLamp(letter) {
+      var state = this.state;
+      state.text = state.text + letter;
+      state.lamps.map(function (lamp) {
+        letter === lamp.letter ? lamp.glowing = true : lamp.glowing = false;
+      });
+      this.setState(state);
+    }
+  }, {
+    key: 'handleRotorSetting',
+    value: function handleRotorSetting(index, method, location) {
+      var state = this.state;
+      state.text = '';
+      method === 'add' ? state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 : state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
 
-            socket.on("lamp", function (lamp) {
-                _this2.lightLamp(lamp);
-            });
-        }
-    }, {
-        key: "handleKeyPress",
-        value: function handleKeyPress(e) {
+      this.setState(state);
+      this.state.rotorsSelected && this.createEnigma();
+    }
+  }, {
+    key: 'updateSelectedRotors',
+    value: function updateSelectedRotors(selectedSlots) {
+      if (selectedSlots.filter(function (slot) {
+        return slot.rotor != null;
+      }).length === 3) {
+        this.setState({ rotorsSelected: true, text: '' });
+        this.createEnigma();
+      } else {
+        this.setState({ rotorsSelected: false });
+      }
+    }
+  }, {
+    key: 'moveRotor',
+    value: function moveRotor(index, rotorProps, to) {
+      var rotor = rotorProps.rotor;
+      var state = this.state;
+      var target = state[to][index];
+      var source = state[rotorProps.location][rotorProps.index];
 
-            if (this.state.rotorsSelected) {
-                socket.emit("encrypt", e.target.getAttribute("data-letter"));
-                this.setState(rotate(this.state.selectedSlots.reduce(function (rotors, slot) {
-                    return rotors.concat(slot.rotor);
-                }, [])));
-            } else {
-                alert("You have to select 3 rotors");
-            }
-        }
-    }, {
-        key: "createEnigma",
-        value: function createEnigma() {
-            socket.emit("create-enigma", this.state.selectedSlots.reduce(function (rotors, slot) {
-                return rotors.concat(slot.rotor);
-            }, []));
-        }
-    }, {
-        key: "lightLamp",
-        value: function lightLamp(letter) {
-            var state = this.state;
-            state.text = state.text + letter;
-            state.lamps.map(function (lamp) {
-                letter === lamp.letter ? lamp.glowing = "glowing" : lamp.glowing = "dim";
-            });
-            this.setState(state);
-        }
-    }, {
-        key: "handleRotorSetting",
-        value: function handleRotorSetting(index, method, location) {
-            var state = this.state;
-            state.text = "";
-            method === "add" ? state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 : state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
+      if (!target.rotor) {
+        target.rotor = rotor;
+        source.rotor = null;
+      } else {
+        source.rotor = target.rotor;
+        target.rotor = rotor;
+      }
+      this.setState({ selectedSlots: state.selectedSlots, choseSlots: state.choseSlots });
+      this.updateSelectedRotors(this.state.selectedSlots);
+    }
+  }, {
+    key: 'updateInfo',
+    value: function updateInfo() {
+      //TODO: infopanel
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        { id: 'main' },
+        _react2.default.createElement(
+          'div',
+          { id: 'enigma' },
+          _react2.default.createElement(_settings2.default, {
+            choseSlots: this.state.choseSlots,
+            slots: this.state.selectedSlots,
+            moveRotor: this.moveRotor,
+            handleRotorSetting: this.handleRotorSetting }),
+          _react2.default.createElement(_lamps2.default, {
+            lamps: this.state.lamps }),
+          _react2.default.createElement(_keyboard2.default, {
+            keys: this.state.keys,
+            handleKeyPress: this.handleKeyPress })
+        ),
+        _react2.default.createElement(_infopanel2.default, {
+          text: this.state.text })
+      );
+    }
+  }]);
 
-            this.setState(state);
-            this.state.rotorsSelected && this.createEnigma();
-        }
-    }, {
-        key: "updateSelectedRotors",
-        value: function updateSelectedRotors(selectedSlots) {
-            if (selectedSlots.filter(function (slot) {
-                return slot.rotor != null;
-            }).length === 3) {
-                this.setState({ rotorsSelected: true, text: "" });
-                this.createEnigma();
-            } else {
-                this.setState({ rotorsSelected: false });
-            }
-        }
-    }, {
-        key: "moveRotor",
-        value: function moveRotor(index, rotorProps, to) {
-            var rotor = rotorProps.rotor;
-            var state = this.state;
-            var target = state[to][index];
-            var source = state[rotorProps.location][rotorProps.index];
-
-            if (!target.rotor) {
-                target.rotor = rotor;
-                source.rotor = null;
-            } else {
-                source.rotor = target.rotor;
-                target.rotor = rotor;
-            }
-            this.setState({ selectedSlots: state.selectedSlots, choseSlots: state.choseSlots });
-            this.updateSelectedRotors(this.state.selectedSlots);
-        }
-    }, {
-        key: "updateInfo",
-        value: function updateInfo() {
-            //TODO: infopanel
-        }
-    }, {
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { id: "main" },
-                _react2.default.createElement(
-                    "div",
-                    { id: "enigma" },
-                    _react2.default.createElement(_settings2.default, {
-                        choseSlots: this.state.choseSlots,
-                        slots: this.state.selectedSlots,
-                        moveRotor: this.moveRotor,
-                        handleRotorSetting: this.handleRotorSetting }),
-                    _react2.default.createElement(_lamps2.default, {
-                        lamps: this.state.lamps }),
-                    _react2.default.createElement(_keyboard2.default, {
-                        keys: this.state.keys,
-                        handleKeyPress: this.handleKeyPress })
-                ),
-                _react2.default.createElement(_infopanel2.default, {
-                    text: this.state.text })
-            );
-        }
-    }]);
-
-    return Enigma;
+  return Enigma;
 }(_react.Component);
 
 function rotate(rotors) {
-    var _iteratorNormalCompletion = true;
-    var _didIteratorError = false;
-    var _iteratorError = undefined;
+  var _iteratorNormalCompletion = true;
+  var _didIteratorError = false;
+  var _iteratorError = undefined;
 
-    try {
+  try {
 
-        for (var _iterator = rotors.reverse()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-            var rotor = _step.value;
+    for (var _iterator = rotors.reverse()[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
+      var rotor = _step.value;
 
-            if (rotor.position < 26) {
-                rotor.position++;
-                break;
-            } else {
-                rotor.position = 1;
-            }
-        }
-    } catch (err) {
-        _didIteratorError = true;
-        _iteratorError = err;
-    } finally {
-        try {
-            if (!_iteratorNormalCompletion && _iterator.return) {
-                _iterator.return();
-            }
-        } finally {
-            if (_didIteratorError) {
-                throw _iteratorError;
-            }
-        }
+      if (rotor.position < 26) {
+        rotor.position++;
+        break;
+      } else {
+        rotor.position = 1;
+      }
     }
+  } catch (err) {
+    _didIteratorError = true;
+    _iteratorError = err;
+  } finally {
+    try {
+      if (!_iteratorNormalCompletion && _iterator.return) {
+        _iterator.return();
+      }
+    } finally {
+      if (_didIteratorError) {
+        throw _iteratorError;
+      }
+    }
+  }
 
-    return rotors;
+  return rotors;
 }
 
 exports.default = Enigma;
@@ -35044,61 +35044,59 @@ function getEmptyImage() {
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
-var lamps = "QWERTZUIOPASDFGHJKLYXCVBNM".split("").map(function (letter) {
-    return {
-        letter: letter,
-        glowing: "dim"
-    };
+var lamps = 'QWERTZUIOPASDFGHJKLYXCVBNM'.split('').map(function (letter) {
+  return {
+    letter: letter,
+    glowing: false
+  };
 });
 var config = exports.config = {
-    keyboard: {
-        firstRow: "QWERTZUIOP",
-        secondRow: "ASDFGHJKL",
-        thirdRow: "YXCVBNM"
-    },
-    choseSlots: [{
-        rotor: {
-            label: "I",
-            position: 1,
-            letters: "LEYJVCNIXWPBQMDRTAKZGFUHOS",
-            selected: false
-        }
-    }, {
-        rotor: {
-            label: "II",
-            position: 1,
-            letters: "AJDKSIRUXBLHWTMCQGZNPYFVOE",
-            selected: false
-        }
-    }, {
-        rotor: {
-            label: "III",
-            position: 1,
-            letters: "NZJHGRCXMYSWBOUFAIVLPEKQDT",
-            selected: false
-        }
-    }, {
-        rotor: {
-            label: "IV",
-            position: 1,
-            letters: "FKQHTLXOCBJSPDZRAMEWNIUYGV",
-            selected: false
-            //index: 3
-        }
-    }, {
-        rotor: {
-            label: "V",
-            position: 1,
-            letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB",
-            selected: false
-            //index: 4
-        }
-    }],
-    selectedSlots: [{ rotor: null }, { rotor: null }, { rotor: null }],
-
-    lamps: lamps
+  keyboard: {
+    firstRow: 'QWERTZUIOP',
+    secondRow: 'ASDFGHJKL',
+    thirdRow: 'YXCVBNM'
+  },
+  choseSlots: [{
+    rotor: {
+      label: 'I',
+      position: 1,
+      letters: 'LEYJVCNIXWPBQMDRTAKZGFUHOS'
+    }
+  }, {
+    rotor: {
+      label: 'II',
+      position: 1,
+      letters: 'AJDKSIRUXBLHWTMCQGZNPYFVOE'
+    }
+  }, {
+    rotor: {
+      label: 'III',
+      position: 1,
+      letters: 'NZJHGRCXMYSWBOUFAIVLPEKQDT'
+    }
+  }, {
+    rotor: {
+      label: 'IV',
+      position: 1,
+      letters: 'FKQHTLXOCBJSPDZRAMEWNIUYGV'
+    }
+  }, {
+    rotor: {
+      label: 'V',
+      position: 1,
+      letters: 'ESOVPZJAYQUIRHXLNFTGKDCMWB'
+    }
+  }],
+  selectedSlots: [{
+    rotor: null
+  }, {
+    rotor: null
+  }, {
+    rotor: null
+  }],
+  lamps: lamps
 };
 
 /***/ }),
@@ -38239,7 +38237,7 @@ Backoff.prototype.setJitter = function(jitter){
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -38271,55 +38269,55 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Settings = function (_Component) {
-    _inherits(Settings, _Component);
+  _inherits(Settings, _Component);
 
-    function Settings() {
-        _classCallCheck(this, Settings);
+  function Settings() {
+    _classCallCheck(this, Settings);
 
-        return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Settings.__proto__ || Object.getPrototypeOf(Settings)).apply(this, arguments));
+  }
+
+  _createClass(Settings, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      return _react2.default.createElement(
+        'div',
+        { id: 'settings' },
+        _react2.default.createElement(
+          'ul',
+          { id: 'choseSlots' },
+          this.props.choseSlots.map(function (slot, i) {
+            return _react2.default.createElement(_slot2.default, {
+              type: 'choseSlots',
+              selected: false,
+              rotor: slot.rotor,
+              index: i,
+              key: i,
+              handleRotorSetting: _this2.props.handleRotorSetting,
+              moveRotor: _this2.props.moveRotor });
+          })
+        ),
+        _react2.default.createElement(
+          'ul',
+          { id: 'slots' },
+          this.props.slots.map(function (slot, i) {
+            return _react2.default.createElement(_slot2.default, {
+              type: 'selectedSlots',
+              selected: false,
+              rotor: slot.rotor,
+              index: i,
+              key: i,
+              handleRotorSetting: _this2.props.handleRotorSetting,
+              moveRotor: _this2.props.moveRotor });
+          })
+        )
+      );
     }
+  }]);
 
-    _createClass(Settings, [{
-        key: "render",
-        value: function render() {
-            var _this2 = this;
-
-            return _react2.default.createElement(
-                "div",
-                { id: "settings" },
-                _react2.default.createElement(
-                    "ul",
-                    { id: "choseSlots" },
-                    this.props.choseSlots.map(function (slot, i) {
-                        return _react2.default.createElement(_slot2.default, {
-                            type: "choseSlots",
-                            selected: false,
-                            rotor: slot.rotor,
-                            index: i,
-                            key: i,
-                            handleRotorSetting: _this2.props.handleRotorSetting,
-                            moveRotor: _this2.props.moveRotor });
-                    })
-                ),
-                _react2.default.createElement(
-                    "ul",
-                    { id: "slots" },
-                    this.props.slots.map(function (slot, i) {
-                        return _react2.default.createElement(_slot2.default, {
-                            type: "selectedSlots",
-                            selected: false,
-                            rotor: slot.rotor,
-                            index: i,
-                            key: i,
-                            handleRotorSetting: _this2.props.handleRotorSetting,
-                            moveRotor: _this2.props.moveRotor });
-                    })
-                )
-            );
-        }
-    }]);
-
-    return Settings;
+  return Settings;
 }(_react.Component);
 
 exports.default = (0, _reactDnd.DragDropContext)(_reactDndHtml5Backend2.default)(Settings);
@@ -38377,16 +38375,16 @@ var Slot = function (_Component) {
   }
 
   _createClass(Slot, [{
-    key: "render",
+    key: 'render',
     value: function render() {
       var _props = this.props,
           connectDropTarget = _props.connectDropTarget,
           isOver = _props.isOver;
 
-      var status = isOver ? "selected" : "notSelected";
+      var status = isOver ? 'selected' : 'notSelected';
       return connectDropTarget(_react2.default.createElement(
-        "div",
-        { className: status + " slot" },
+        'div',
+        { className: status + ' slot' },
         this.props.rotor != null && _react2.default.createElement(_rotor2.default, {
           location: this.props.type,
           rotor: this.props.rotor,
@@ -38399,7 +38397,7 @@ var Slot = function (_Component) {
   return Slot;
 }(_react.Component);
 
-exports.default = (0, _reactDnd.DropTarget)("rotor", rotorTarget, collect)(Slot);
+exports.default = (0, _reactDnd.DropTarget)('rotor', rotorTarget, collect)(Slot);
 
 /***/ }),
 /* 404 */
@@ -38409,7 +38407,7 @@ exports.default = (0, _reactDnd.DropTarget)("rotor", rotorTarget, collect)(Slot)
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -38427,37 +38425,38 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Lamps = function (_Component) {
-    _inherits(Lamps, _Component);
+  _inherits(Lamps, _Component);
 
-    function Lamps() {
-        _classCallCheck(this, Lamps);
+  function Lamps() {
+    _classCallCheck(this, Lamps);
 
-        return _possibleConstructorReturn(this, (Lamps.__proto__ || Object.getPrototypeOf(Lamps)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Lamps.__proto__ || Object.getPrototypeOf(Lamps)).apply(this, arguments));
+  }
+
+  _createClass(Lamps, [{
+    key: 'render',
+    value: function render() {
+
+      return _react2.default.createElement(
+        'ul',
+        { id: 'lamps' },
+        this.props.lamps.map(function (lamp, i) {
+          return _react2.default.createElement(
+            'li',
+            {
+              className: lamp.glowing ? 'glowing' : 'dim' + ' letter',
+              key: i,
+              'data-index': i,
+              'data-letter': lamp.letter },
+            lamp.letter
+          );
+        }),
+        _react2.default.createElement('img', { id: 'logo', src: '702px-Enigma-logo.svg.png' })
+      );
     }
+  }]);
 
-    _createClass(Lamps, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "ul",
-                { id: "lamps" },
-                this.props.lamps.map(function (lamp, i) {
-                    return _react2.default.createElement(
-                        "li",
-                        {
-                            className: lamp.glowing + " letter",
-                            key: i,
-                            "data-index": i,
-                            "data-letter": lamp.letter },
-                        lamp.letter
-                    );
-                }),
-                _react2.default.createElement("img", { id: "logo", src: "702px-Enigma-logo.svg.png" })
-            );
-        }
-    }]);
-
-    return Lamps;
+  return Lamps;
 }(_react.Component);
 
 exports.default = Lamps;
@@ -38507,7 +38506,7 @@ var Keyboard = function (_Component) {
                 _react2.default.createElement(
                     "div",
                     { id: "firstRow" },
-                    this.props.keys.firstRow.split("").map(function (letter, i) {
+                    this.props.keys.firstRow.split('').map(function (letter, i) {
                         return _react2.default.createElement(
                             "li",
                             { className: "letter", onClick: _this2.props.handleKeyPress, key: i, "data-index": i, "data-letter": letter },
@@ -38518,7 +38517,7 @@ var Keyboard = function (_Component) {
                 _react2.default.createElement(
                     "div",
                     { id: "secondRow" },
-                    this.props.keys.secondRow.split("").map(function (letter, i) {
+                    this.props.keys.secondRow.split('').map(function (letter, i) {
                         return _react2.default.createElement(
                             "li",
                             { className: "letter", onClick: _this2.props.handleKeyPress, key: i, "data-index": i, "data-letter": letter },
@@ -38529,7 +38528,7 @@ var Keyboard = function (_Component) {
                 _react2.default.createElement(
                     "div",
                     { id: "thirdRow" },
-                    this.props.keys.thirdRow.split("").map(function (letter, i) {
+                    this.props.keys.thirdRow.split('').map(function (letter, i) {
                         return _react2.default.createElement(
                             "li",
                             { className: "letter", onClick: _this2.props.handleKeyPress, key: i, "data-index": i, "data-letter": letter },
@@ -38554,7 +38553,7 @@ exports.default = Keyboard;
 
 
 Object.defineProperty(exports, "__esModule", {
-    value: true
+  value: true
 });
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
@@ -38572,35 +38571,39 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 var Infopanel = function (_Component) {
-    _inherits(Infopanel, _Component);
+  _inherits(Infopanel, _Component);
 
-    function Infopanel() {
-        _classCallCheck(this, Infopanel);
+  function Infopanel() {
+    _classCallCheck(this, Infopanel);
 
-        return _possibleConstructorReturn(this, (Infopanel.__proto__ || Object.getPrototypeOf(Infopanel)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (Infopanel.__proto__ || Object.getPrototypeOf(Infopanel)).apply(this, arguments));
+  }
+
+  _createClass(Infopanel, [{
+    key: "render",
+    value: function render() {
+      return _react2.default.createElement(
+        "div",
+        { id: "infopanel" },
+        _react2.default.createElement(
+          "div",
+          { className: "infoText" },
+          _react2.default.createElement(
+            "p",
+            null,
+            this.props.text
+          )
+        )
+      );
     }
+  }]);
 
-    _createClass(Infopanel, [{
-        key: "render",
-        value: function render() {
-            return _react2.default.createElement(
-                "div",
-                { id: "infopanel" },
-                _react2.default.createElement(
-                    "div",
-                    { className: "infoText" },
-                    _react2.default.createElement(
-                        "p",
-                        null,
-                        this.props.text
-                    )
-                )
-            );
-        }
-    }]);
-
-    return Infopanel;
+  return Infopanel;
 }(_react.Component);
+//TODO: Testing todo
+//FIXME: Other Test
+//TODO: Another todo
+
 
 exports.default = Infopanel;
 

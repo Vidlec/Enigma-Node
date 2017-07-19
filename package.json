@@ -12,6 +12,9 @@
     "Enigma",
     "crypto"
   ],
+  "eslintConfig": {
+    "extends": "actum" 
+  },
   "author": "Josef Vidlák",
   "license": "MIT",
   "dependencies": {

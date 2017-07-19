@@ -1,5 +1,4 @@
 {
-    "extends": "eslint:recommended",
     "env": {
         "browser": true,
         "commonjs": true,
@@ -21,6 +20,7 @@
         "constructor-super": "warn",
         "valid-typeof": "warn",
         "semi":["error","always"],
-        "quotes":["error","double"]
+        "quotes":["error","single"],
+         "indent": ["error", 2]
     }
 }

@@ -1,10 +1,10 @@
 function enigma(wheels) {
     this.plugboard = {
-        input: "ABCDEFGHIJKLMNOPQRSTUVWXYZ",
-        output: "EKMFLGDQVZNTOWYHXUSPAIBRCJ"
+        input: 'ABCDEFGHIJKLMNOPQRSTUVWXYZ',
+        output: 'EKMFLGDQVZNTOWYHXUSPAIBRCJ'
     };
     this.reflector = {
-        letters: "ESOVPZJAYQUIRHXLNFTGKDCMWB"
+        letters: 'ESOVPZJAYQUIRHXLNFTGKDCMWB'
     };
     this.wheels = init(wheels);
     this.enigma = input => encode(input, this.wheels, this.reflector, this.plugboard);
@@ -13,7 +13,7 @@ function enigma(wheels) {
 //Initial rotor setting depending on starting position
 function init(wheels) {
     return wheels.map(wheel => {
-        let letters = wheel.letters.split("");
+        let letters = wheel.letters.split('');
         wheel.letters = letters.splice(wheel.position).concat(letters.splice(0,wheel.position));
         return wheel;
     });
@@ -42,7 +42,7 @@ function swap(letter, input, output) {
 //So it would be possible to have as many rotors as you desire.
 function encode(input, wheels, reflector, plugboard) {
     return new Promise((resolve, reject) => {
-        let output = "";
+        let output = '';
         for (let letter of input) {
 
             //Rotate wheels once BEFORE encoding
@@ -57,7 +57,7 @@ function encode(input, wheels, reflector, plugboard) {
             letter = swap(letter, wheels[1].letters, wheels[2].letters);
             //Reflector
             letter = swap(letter, wheels[2].letters, reflector.letters);
-            letter = swap(letter, reflector.letters, reflector.letters.split("").reverse().join(""), 0);
+            letter = swap(letter, reflector.letters, reflector.letters.split('').reverse().join(''), 0);
 
             //All again backwards
             //Thirdtwheel
