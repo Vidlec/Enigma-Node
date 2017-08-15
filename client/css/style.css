@@ -5,6 +5,10 @@ margin: 0 auto;
 body{
     background-color: #2c3e50;
 }
+
+.infoText > p {
+  word-break: break-all;
+}
 #firstRow{
 width: 600px;
     height: 60px;
@@ -65,8 +69,9 @@ float: left;
     font-weight: bold;
     user-select: none;
 }
-        #lamps li {  
-float: left;
+
+#lamps li {  
+    float: left;
     margin: 5px;
     width: 50px;
     height: 50px;
@@ -74,8 +79,9 @@ float: left;
     text-align: center;
     border-radius: 100%;
     border: 2px solid #f5f5f5;
-    }
-    #lamps .glowing{
+}
+
+#lamps .glowing{
         background-color: sandybrown;
         box-shadow: 0px 0px 40px darkorange, 0px 0px 20px yellow;
 

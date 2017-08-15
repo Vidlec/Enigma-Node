@@ -53,6 +53,7 @@ class Enigma extends Component{
   }
   createEnigma(){
     socket.emit('create-enigma', this.state.selectedSlots.reduce((rotors,slot) => rotors.concat(slot.rotor),[]));
+    this.setState({lamps: config.lamps});
   }
   lightLamp(letter){
     let state = this.state;
@@ -133,7 +134,6 @@ class Enigma extends Component{
 }
 
 function rotate(rotors) {
-
   for (let rotor of rotors.reverse()) {
     if (rotor.position < 26) {
       rotor.position++;

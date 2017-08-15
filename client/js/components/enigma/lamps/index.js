@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 class Lamps extends Component{
     
   render(){
-
     return(   
       <ul id="lamps">
         {this.props.lamps.map((lamp,i)=>

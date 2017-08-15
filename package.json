@@ -13,7 +13,7 @@
     "crypto"
   ],
   "eslintConfig": {
-    "extends": "actum" 
+    "extends": "actum"
   },
   "author": "Josef Vidlák",
   "license": "MIT",

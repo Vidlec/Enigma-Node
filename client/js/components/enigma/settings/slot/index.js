@@ -8,6 +8,7 @@ const rotorTarget = {
     props.moveRotor(props.index,monitor.getItem(),props.type);
   }
 };
+
 function collect(connect, monitor) {
   return {
     connectDropTarget: connect.dropTarget(),
@@ -19,15 +20,17 @@ class Slot extends Component{
   render(){
     const {connectDropTarget, isOver} = this.props;
     const status = (isOver) ? 'selected' : 'notSelected';
-    return connectDropTarget(<div className={status + ' slot'}>
-      {(this.props.rotor != null) && 
+    
+    return connectDropTarget(
+      <div className={status + ' slot'}>
+        {(this.props.rotor != null) && 
             <Rotor
               location={this.props.type}
               rotor={this.props.rotor}  
               index={this.props.index} 
               handleRotorSetting={this.props.handleRotorSetting}>
             </Rotor>}
-    </div>);
+      </div>);
   }
 }
 export default DropTarget('rotor', rotorTarget, collect)(Slot);
