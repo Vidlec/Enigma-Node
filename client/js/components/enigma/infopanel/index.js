@@ -6,13 +6,10 @@ class Infopanel extends Component{
     return(
       <div id="infopanel">
         <div className="infoText">
-          <p>{this.props.text}</p>
+          {this.props.text.map(row => <p>{row}</p>)}
         </div>
       </div>
     );
   }
 }
-//TODO: Testing todo
-//FIXME: Other Test
-//TODO: Another todo
 export default Infopanel;

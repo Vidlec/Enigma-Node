@@ -25,7 +25,8 @@ class Enigma extends Component{
       choseSlots: config.choseSlots,
       selectedSlots: config.selectedSlots,
       rotorsSelected: false,
-      text: ''
+      currentText: '',
+      text: ['']
 
     };
     this.handleKeyPress = this.handleKeyPress.bind(this);
@@ -57,7 +58,8 @@ class Enigma extends Component{
   }
   lightLamp(letter){
     let state = this.state;
-    state.text = state.text + letter;
+    state.currentText = state.currentText + letter;
+    state.text[state.text.length - 1] = state.text[state.text.length - 1] + letter; 
     state.lamps.map((lamp) => {
       (letter === lamp.letter) ? lamp.glowing = true : lamp.glowing = false; 
     });
@@ -66,7 +68,8 @@ class Enigma extends Component{
 
   handleRotorSetting(index, method, location){
     let state = this.state;
-    state.text = '';
+    state.currentText.length > 0 && state.text.push('');
+    state.currentText = '';
     (method === 'add') ?
       state[location][index].rotor.position < 26 ? state[location][index].rotor.position++ : state[location][index].rotor.position = 1 :
       state[location][index].rotor.position > 1 ? state[location][index].rotor.position-- : state[location][index].rotor.position = 26;
@@ -76,8 +79,10 @@ class Enigma extends Component{
   }
 
   updateSelectedRotors(selectedSlots){
+    
     if(selectedSlots.filter(slot => (slot.rotor != null)).length === 3){
-      this.setState({rotorsSelected: true,text: ''});
+
+      this.setState({rotorsSelected: true, currentText: ''});
       this.createEnigma();
     } 
     else{
@@ -88,6 +93,8 @@ class Enigma extends Component{
   moveRotor(index,rotorProps,to){
     let rotor = rotorProps.rotor;
     let state = this.state;
+    state.currentText.length > 0 && state.text.push('');
+    state.currentText = '';
     let target = state[to][index];
     let source = state[rotorProps.location][rotorProps.index];
 
@@ -100,7 +107,7 @@ class Enigma extends Component{
       source.rotor = target.rotor;
       target.rotor = rotor;
     }
-    this.setState({selectedSlots: state.selectedSlots, choseSlots: state.choseSlots});
+    this.setState({selectedSlots: state.selectedSlots, choseSlots: state.choseSlots, currentText: state.currentText, text: state.text});
     this.updateSelectedRotors(this.state.selectedSlots);
   }
   updateInfo(){
