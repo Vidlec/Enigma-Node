@@ -9,6 +9,9 @@ body{
 .infoText > p {
   word-break: break-all;
 }
+p{
+  margin: 0;
+}
 #firstRow{
 width: 600px;
     height: 60px;
